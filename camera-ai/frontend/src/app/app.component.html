@@ -1,11 +1,14 @@
-<div class="container">
-  <header>
-    <h1>Camera AI</h1>
-    <p class="subtitle">Live Face Detection</p>
-  </header>
-  <main>
-    <div class="video-wrapper">
-      <img [src]="streamUrl" alt="Live camera feed with face detection" />
-    </div>
-  </main>
+<div class="dashboard">
+  <div class="video-panel">
+    <img [src]="streamUrl" alt="Live camera feed" />
+  </div>
+
+  <div class="controls-panel">
+    @for (btn of buttons; track btn.label) {
+      <button mat-flat-button class="control-btn">
+        <mat-icon>{{ btn.icon }}</mat-icon>
+        <span>{{ btn.label }}</span>
+      </button>
+    }
+  </div>
 </div>

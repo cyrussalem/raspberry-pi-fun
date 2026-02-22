@@ -1,0 +1,5 @@
+fastapi>=0.115.0
+uvicorn[standard]>=0.34.0
+pydantic-settings>=2.7.0
+# numpy, opencv, and picamera2 are installed via apt on the Pi.
+# Do NOT pip install them — binary incompatibility with system libraries.

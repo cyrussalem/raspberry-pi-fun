@@ -9,6 +9,9 @@ dist/
 # Environment
 .env
 
+# Runtime data (access codes, etc.)
+data/
+
 # Backend static files (built from Angular)
 backend/static/
 

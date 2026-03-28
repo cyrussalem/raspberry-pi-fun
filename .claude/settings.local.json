@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(source .venv/Scripts/activate)",
+      "Bash(python -c \"from backend.main import app; print\\(''Import OK''\\)\")",
+      "Bash(pip install:*)",
+      "Bash(python -m pytest tests/ -v)",
+      "Bash(npx ng:*)",
+      "Bash(npm install:*)",
+      "Bash(npx jest:*)",
+      "Bash(node -e \"console.log\\(JSON.stringify\\(require\\(''/c/Users/Cyrus/Software_Projects/GitHub/raspberry-pi-fun/camera-ai/frontend/node_modules/jest-preset-angular/presets''\\).createCjsPreset\\(\\), null, 2\\)\\)\")",
+      "Bash(node -e \"console.log\\(JSON.stringify\\(require\\(''jest-preset-angular/presets''\\).createCjsPreset\\(\\), null, 2\\)\\)\")"
+    ]
+  }
+}

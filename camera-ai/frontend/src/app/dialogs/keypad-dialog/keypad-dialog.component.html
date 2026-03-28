@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Enter Access Code</h2>
+
+<mat-dialog-content>
+  <div class="code-display">
+    <span class="code-dots">{{ maskedCode || '&nbsp;' }}</span>
+  </div>
+
+  <div class="keypad">
+    @for (key of keys; track key) {
+      <button
+        mat-flat-button
+        class="key-btn"
+        [class.key-action]="key === 'backspace' || key === 'check'"
+        [class.key-submit]="key === 'check'"
+        [disabled]="isSubmitting"
+        (click)="onKeyPress(key)"
+      >
+        @if (key === 'backspace') {
+          <mat-icon>backspace</mat-icon>
+        } @else if (key === 'check') {
+          <mat-icon>check</mat-icon>
+        } @else {
+          {{ key }}
+        }
+      </button>
+    }
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

@@ -65,6 +65,38 @@ python -m uvicorn backend.main:app --host 0.0.0.0 --port 8000
 # Open http://<pi-ip>:8000
 ```
 
+### Testing — Backend (pytest)
+```bash
+# Install test dependencies (first time)
+pip install -e ".[dev]"
+
+# Run all tests
+python -m pytest tests/ -v
+
+# Run a specific test file
+python -m pytest tests/test_access_api.py -v
+
+# Run a specific test class or method
+python -m pytest tests/test_access_api.py::TestVerifyEndpoint -v
+python -m pytest tests/test_access_api.py::TestVerifyEndpoint::test_verify_correct_code -v
+```
+
+Tests do not require camera hardware or GPIO — they use a test FastAPI app with mocked dependencies.
+
+### Testing — Frontend (Jest)
+```bash
+cd frontend
+
+# Run all tests
+npm test
+
+# Run a specific test file
+npx jest src/app/services/access.service.spec.ts
+
+# Run tests in watch mode
+npx jest --watch
+```
+
 ## Dependencies
 
 - Python: fastapi, uvicorn, opencv-python-headless, pydantic-settings, numpy

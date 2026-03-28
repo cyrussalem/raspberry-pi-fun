@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>Update Access Code</h2>
+
+<mat-dialog-content>
+  @if (error) {
+    <div class="error-banner">{{ error }}</div>
+  }
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Current Code</mat-label>
+    <input
+      matInput
+      type="password"
+      [(ngModel)]="currentCode"
+      maxlength="8"
+      autocomplete="off"
+    />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>New Code</mat-label>
+    <input
+      matInput
+      type="password"
+      [(ngModel)]="newCode"
+      maxlength="8"
+      autocomplete="off"
+    />
+    <mat-hint>Must be 4 or more digits</mat-hint>
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-flat-button
+    color="primary"
+    [disabled]="!isValid || isSubmitting"
+    (click)="submit()"
+  >
+    Update
+  </button>
+</mat-dialog-actions>

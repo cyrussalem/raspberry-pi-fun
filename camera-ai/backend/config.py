@@ -11,6 +11,10 @@ class Settings(BaseSettings):
     stream_fps: int = 15
     host: str = "0.0.0.0"
     port: int = 8000
+    access_code_file: str = "data/access_code.txt"
+    default_access_code: str = "0000"
+    gpio_pin: int = 17
+    gpio_unlock_duration: int = 5
 
     model_config = {"env_prefix": "", "env_file": ".env"}
 

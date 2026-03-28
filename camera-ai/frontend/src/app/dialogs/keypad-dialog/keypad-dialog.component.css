@@ -1,0 +1,46 @@
+.code-display {
+  text-align: center;
+  padding: 16px;
+  margin-bottom: 16px;
+  background: #1a1a1a;
+  border-radius: 12px;
+  min-height: 40px;
+}
+
+.code-dots {
+  font-size: 2.8rem;
+  letter-spacing: 12px;
+  color: #ffffff;
+}
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.key-btn {
+  height: 92px;
+  font-size: 2.2rem;
+  border-radius: 12px !important;
+  background-color: #3a3a3a !important;
+  color: #ffffff !important;
+}
+
+.key-btn:hover:not([disabled]) {
+  background-color: #4a4a4a !important;
+}
+
+.key-action {
+  font-size: 2rem;
+}
+
+.key-submit {
+  background-color: #00838f !important;
+}
+
+.key-submit:hover:not([disabled]) {
+  background-color: #00acc1 !important;
+}

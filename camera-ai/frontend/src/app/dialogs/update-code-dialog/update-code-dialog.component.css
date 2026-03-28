@@ -1,0 +1,13 @@
+.full-width {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.error-banner {
+  background-color: #d32f2f;
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}

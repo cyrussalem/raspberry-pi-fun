@@ -204,3 +204,38 @@ async def capture_photo(staff_id: str):
         message="Photo captured and face encoding generated successfully.",
         data={"photo_path": relative_path, "faces_found": len(results)},
     )
+
+
+@router.delete("/{staff_id}/photos", response_model=StaffResponse)
+async def delete_photo(staff_id: str, photo_path: str):
+    """Delete a specific photo from a staff member.
+
+    Pass the relative photo path as a query parameter, e.g.:
+    DELETE /api/staff/alice_johnson/photos?photo_path=staff/alice_johnson/photo_001.jpg
+    """
+    record = _store.get_staff(staff_id)
+    if record is None:
+        return JSONResponse(
+            status_code=404,
+            content=StaffResponse(
+                status="error",
+                message=f"Staff member '{staff_id}' not found.",
+            ).model_dump(),
+        )
+
+    success = _store.delete_photo(staff_id, photo_path)
+    if not success:
+        return JSONResponse(
+            status_code=404,
+            content=StaffResponse(
+                status="error",
+                message="Photo not found.",
+            ).model_dump(),
+        )
+
+    _reload_known_faces()
+
+    return StaffResponse(
+        status="success",
+        message="Photo removed.",
+    )

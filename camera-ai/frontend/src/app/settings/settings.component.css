@@ -1,0 +1,84 @@
+.page-header {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.settings-content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.section {
+  margin: 24px 0;
+}
+
+.section h2 {
+  color: #ffffff;
+  margin: 0 0 16px 0;
+  font-size: 1.25rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.error-banner {
+  background-color: #d32f2f;
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.staff-card {
+  cursor: pointer;
+  background-color: #3a3a3a !important;
+  color: #ffffff !important;
+  text-align: center;
+  padding: 16px 8px;
+}
+
+.staff-card:hover {
+  background-color: #4a4a4a !important;
+}
+
+.staff-icon {
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+  color: #00bcd4;
+  margin-bottom: 8px;
+}
+
+.staff-name {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.staff-photos {
+  font-size: 0.8rem;
+  color: #aaaaaa;
+}
+
+.loading-text,
+.empty-text {
+  color: #aaaaaa;
+  text-align: center;
+  padding: 24px 0;
+}

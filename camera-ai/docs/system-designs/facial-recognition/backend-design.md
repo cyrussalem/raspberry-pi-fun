@@ -395,6 +395,50 @@ Capture a photo directly from the live camera feed instead of uploading a file.
 
 ---
 
+### `DELETE /api/staff/{staff_id}/photos?photo_path=...`
+
+Delete a specific photo from a staff member. The relative photo path is passed as a query parameter.
+
+#### Request
+
+```
+DELETE /api/staff/alice_johnson/photos?photo_path=staff/alice_johnson/photo_001.jpg
+```
+
+#### Response — 200
+
+```json
+{
+  "status": "success",
+  "message": "Photo removed."
+}
+```
+
+#### Response — 404
+
+```json
+{
+  "status": "error",
+  "message": "Photo not found."
+}
+```
+
+---
+
+### Staff Photo Serving
+
+Staff photos are served as static files via a FastAPI `StaticFiles` mount:
+
+```
+GET /api/staff-photos/{staff_id}/{filename}
+```
+
+Example: `GET /api/staff-photos/alice_johnson/photo_001.jpg`
+
+This is configured in `main.py` by mounting the `data/staff/` directory at `/api/staff-photos`.
+
+---
+
 ## Streaming Integration
 
 ### The Performance Problem

@@ -1,0 +1,14 @@
+<div class="dashboard">
+  <div class="video-panel">
+    <img [src]="streamUrl" alt="Live camera feed" />
+  </div>
+
+  <div class="controls-panel">
+    @for (btn of buttons; track btn.label) {
+      <button mat-flat-button class="control-btn" (click)="onButtonClick(btn.label)">
+        <mat-icon>{{ btn.icon }}</mat-icon>
+        <span>{{ btn.label }}</span>
+      </button>
+    }
+  </div>
+</div>

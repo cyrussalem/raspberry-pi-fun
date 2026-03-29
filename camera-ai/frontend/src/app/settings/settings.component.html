@@ -1,0 +1,70 @@
+<mat-toolbar class="page-header">
+  <button mat-icon-button (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span>Settings</span>
+</mat-toolbar>
+
+<div class="settings-content">
+  <!-- Access Code Section -->
+  <div class="section">
+    <h2>Access Code</h2>
+
+    @if (codeError) {
+      <div class="error-banner">{{ codeError }}</div>
+    }
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Current Code</mat-label>
+      <input matInput type="password" [(ngModel)]="currentCode" maxlength="8" autocomplete="off" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>New Code</mat-label>
+      <input matInput type="password" [(ngModel)]="newCode" maxlength="8" autocomplete="off" />
+      <mat-hint>Must be 4 or more digits</mat-hint>
+    </mat-form-field>
+
+    <button
+      mat-flat-button
+      color="primary"
+      [disabled]="!isCodeValid || isUpdatingCode"
+      (click)="updateCode()"
+    >
+      Update Code
+    </button>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <!-- Staff Management Section -->
+  <div class="section">
+    <div class="section-header">
+      <h2>Staff Management</h2>
+      <button mat-flat-button color="primary" (click)="addStaff()">
+        <mat-icon>add</mat-icon>
+        Add New Staff
+      </button>
+    </div>
+
+    @if (isLoadingStaff) {
+      <p class="loading-text">Loading staff...</p>
+    }
+
+    @if (!isLoadingStaff && staffList.length === 0) {
+      <p class="empty-text">No staff members registered.</p>
+    }
+
+    <div class="staff-grid">
+      @for (member of staffList; track member.id) {
+        <mat-card class="staff-card" (click)="editStaff(member.id)">
+          <mat-card-content>
+            <mat-icon class="staff-icon">person</mat-icon>
+            <div class="staff-name">{{ member.name }}</div>
+            <div class="staff-photos">{{ member.photos.length }} photo(s)</div>
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+  </div>
+</div>

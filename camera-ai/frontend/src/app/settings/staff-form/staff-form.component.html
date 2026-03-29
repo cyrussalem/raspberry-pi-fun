@@ -1,0 +1,96 @@
+<mat-toolbar class="page-header">
+  <button mat-icon-button (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <span>{{ pageTitle }}</span>
+</mat-toolbar>
+
+<div class="form-content">
+  @if (error) {
+    <div class="error-banner">{{ error }}</div>
+  }
+
+  @if (isLoading) {
+    <p class="loading-text">Loading...</p>
+  }
+
+  <!-- Add Mode -->
+  @if (!isEditMode && !isLoading) {
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Staff Name</mat-label>
+      <input matInput [(ngModel)]="staffName" autocomplete="off" />
+    </mat-form-field>
+
+    <div class="file-upload">
+      <label class="file-label">Photo</label>
+      <input
+        type="file"
+        accept="image/*"
+        (change)="onFileSelected($event)"
+        class="file-input"
+      />
+      @if (selectedFile) {
+        <span class="file-name">{{ selectedFile.name }}</span>
+      }
+    </div>
+
+    <div class="actions">
+      <button mat-button (click)="goBack()">Cancel</button>
+      <button
+        mat-flat-button
+        color="primary"
+        [disabled]="!isAddValid || isSubmitting"
+        (click)="submitNew()"
+      >
+        Submit
+      </button>
+    </div>
+  }
+
+  <!-- Edit Mode -->
+  @if (isEditMode && !isLoading) {
+    <h2 class="staff-name-header">{{ staffName }}</h2>
+
+    <div class="photos-section">
+      <div class="photos-header">
+        <h3>Photos ({{ photos.length }})</h3>
+        <button
+          mat-flat-button
+          color="primary"
+          [disabled]="isSubmitting"
+          (click)="uploadNewPhoto()"
+        >
+          <mat-icon>upload</mat-icon>
+          Upload New Photo
+        </button>
+      </div>
+
+      @if (photos.length === 0) {
+        <p class="empty-text">No photos uploaded yet.</p>
+      }
+
+      <div class="photos-grid">
+        @for (photo of photos; track photo) {
+          <div class="photo-card">
+            <img [src]="getPhotoUrl(photo)" [alt]="getPhotoFilename(photo)" />
+            <div class="photo-name">{{ getPhotoFilename(photo) }}</div>
+            <button
+              mat-icon-button
+              class="delete-photo-btn"
+              (click)="deletePhoto(photo)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="danger-zone">
+      <button mat-flat-button class="delete-staff-btn" (click)="deleteStaff()">
+        <mat-icon>delete_forever</mat-icon>
+        Delete Staff Member
+      </button>
+    </div>
+  }
+</div>

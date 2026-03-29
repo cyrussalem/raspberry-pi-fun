@@ -93,6 +93,15 @@ app.include_router(health.router)
 app.include_router(access.router)
 app.include_router(staff.router)
 
+# Serve staff photos
+staff_photos_dir = Path(settings.staff_data_dir) / "staff"
+if staff_photos_dir.exists():
+    app.mount(
+        "/api/staff-photos",
+        StaticFiles(directory=staff_photos_dir),
+        name="staff-photos",
+    )
+
 # Serve Angular static files in production
 static_dir = Path(__file__).parent / "static"
 if static_dir.exists():
